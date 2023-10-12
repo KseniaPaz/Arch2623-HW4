@@ -7,7 +7,10 @@ import java.util.Objects;
  */
 public class User {
 
-
+    private int id;
+    private String userName;
+    private int hashPassword;
+    private long cardNumber;
 
     public User(int id, String userName, int hashPassword, long cardNumber) {
         this.id = id;
@@ -15,7 +18,6 @@ public class User {
         this.hashPassword = hashPassword;
         this.cardNumber = cardNumber;
     }
-
 
     @Override
     public String toString() {
@@ -28,18 +30,35 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || this.getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass())
+            return false;
         User client = (User) o;
         return this.equals(client);
     }
 
-
     public boolean equals(User client) {
-        return id == client.id && hashPassword == client.hashPassword && cardNumber == client.cardNumber && userName.equals(client.userName);
+        return id == client.id && hashPassword == client.hashPassword && cardNumber == client.cardNumber
+                && userName.equals(client.userName);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, userName, hashPassword, cardNumber);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public int getHashPassword() {
+        return hashPassword;
+    }
+
+    public long getCardNumber() {
+        return cardNumber;
     }
 }
